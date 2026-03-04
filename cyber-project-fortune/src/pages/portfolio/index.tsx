@@ -14,9 +14,7 @@ export default function Portfolio() {
   }, [])
 
   const userStatus = useMemo(() => {
-    const projectResults: ProjectResult[] = projects
-      .filter((p): p is Project & { result: ProjectResult } => p.result !== undefined)
-      .map((p) => p.result)
+    const projectResults: ProjectResult[] = projects.map((p) => p.result)
     
     if (projectResults.length === 0 && projects.length > 0) {
       return {
@@ -50,13 +48,7 @@ export default function Portfolio() {
   if (isLoading) {
     return (
       <View className='min-h-screen bg-black flex items-center justify-center'>
-        <Text 
-          className='text-lg'
-          style={{ 
-            color: '#4ade80',
-            textShadow: '0 0 10px rgba(74, 222, 128, 0.5)'
-          }}
-        >
+        <Text className='text-lg text-green-400 drop-shadow-glow-green'>
           加载命盘中...
         </Text>
       </View>
@@ -68,43 +60,30 @@ export default function Portfolio() {
       <ScrollView scrollY className='h-screen pb-24'>
         <View className='p-6'>
           <View 
-            className='mb-8 p-6 rounded-lg'
+            className='mb-8 p-6 rounded-lg shadow-glow-gold'
             style={{
               background: 'linear-gradient(180deg, rgba(30, 30, 30, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%)',
-              border: '1px solid rgba(255, 215, 0, 0.3)',
-              boxShadow: '0 0 30px rgba(255, 215, 0, 0.1), inset 0 0 20px rgba(255, 215, 0, 0.05)'
+              border: '1px solid rgba(255, 215, 0, 0.3)'
             }}
           >
-            <Text 
-              className='block text-center mb-2 text-sm'
-              style={{ color: 'rgba(255, 215, 0, 0.6)' }}
-            >
+            <Text className='block text-center mb-2 text-sm text-yellow-500 opacity-60'>
               造物主境界
             </Text>
             
-            <Text 
-              className='block text-center text-2xl font-bold mb-4'
-              style={{ 
-                color: '#ffd700',
-                textShadow: '0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.4)'
-              }}
-            >
+            <Text className='block text-center text-2xl font-bold mb-4 text-yellow-400 drop-shadow-glow-gold'>
               『{userStatus.title}』
             </Text>
             
             <Text 
-              className='block text-center text-sm mb-4 px-4'
-              style={{ color: '#9ca3af', lineHeight: '1.6' }}
+              className='block text-center text-sm mb-4 px-4 text-gray-400'
+              style={{ lineHeight: '1.6' }}
             >
               {userStatus.description}
             </Text>
             
             <View 
-              className='flex justify-center'
-              style={{
-                paddingTop: '12px',
-                borderTop: '1px solid rgba(255, 215, 0, 0.2)'
-              }}
+              className='flex justify-center pt-3'
+              style={{ borderTop: '1px solid rgba(255, 215, 0, 0.2)' }}
             >
               <Text 
                 className='text-sm'
@@ -119,19 +98,10 @@ export default function Portfolio() {
           </View>
 
           <View className='flex items-center justify-between mb-4'>
-            <Text 
-              className='text-lg font-bold'
-              style={{ 
-                color: '#ffffff',
-                textShadow: '0 0 10px rgba(255, 255, 255, 0.3)'
-              }}
-            >
+            <Text className='text-lg font-bold text-white drop-shadow-glow-white'>
               项目图鉴
             </Text>
-            <Text 
-              className='text-sm'
-              style={{ color: '#6b7280' }}
-            >
+            <Text className='text-sm text-gray-500'>
               共 {projects.length} 个
             </Text>
           </View>
@@ -145,63 +115,48 @@ export default function Portfolio() {
               }}
             >
               <Text className='text-4xl block mb-4'>🔮</Text>
-              <Text 
-                className='text-sm'
-                style={{ color: '#6b7280' }}
-              >
+              <Text className='text-sm text-gray-500'>
                 暂无项目，开始你的第一次推演吧
               </Text>
             </View>
           ) : (
             <View className='grid grid-cols-2 gap-4'>
-              {projects.map((project) => (
-                <View
-                  key={project.id}
-                  className='p-4 rounded-lg'
-                  style={{
-                    backgroundColor: 'rgba(20, 20, 20, 0.8)',
-                    border: '1px solid rgba(74, 222, 128, 0.2)',
-                    boxShadow: 'inset 0 0 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(74, 222, 128, 0.1)'
-                  }}
-                  onClick={() => {
-                    Taro.showModal({
-                      title: project.name,
-                      content: `命格: ${project.hexagram || '未知'}\n\n${project.divination || project.description}`,
-                      showCancel: false
-                    })
-                  }}
-                >
-                  <Text 
-                    className='block text-base font-bold mb-2 truncate'
-                    style={{ 
-                      color: '#ffffff',
-                      textShadow: '0 0 5px rgba(255, 255, 255, 0.2)'
+              {projects.map((project) => {
+                const result = project.result
+
+                return (
+                  <View
+                    key={project.id}
+                    className='p-4 rounded-lg shadow-card'
+                    style={{
+                      backgroundColor: 'rgba(20, 20, 20, 0.8)',
+                      border: '1px solid rgba(74, 222, 128, 0.2)'
+                    }}
+                    onClick={() => {
+                      Taro.showModal({
+                        title: project.name,
+                        content: `命格: ${result?.destinyName || '未知'}\n\n${result?.comment || ''}`,
+                        showCancel: false
+                      })
                     }}
                   >
-                    {project.name}
-                  </Text>
-                  
-                  <Text 
-                    className='block text-sm mb-2'
-                    style={{ 
-                      color: '#4ade80',
-                      textShadow: '0 0 8px rgba(74, 222, 128, 0.5)'
-                    }}
-                  >
-                    {project.hexagram || '凡人项目'}
-                  </Text>
-                  
-                  <Text 
-                    className='block text-xs'
-                    style={{ 
-                      color: '#6b7280',
-                      lineHeight: '1.5'
-                    }}
-                  >
-                    {truncateText(project.divination || project.description, 20)}
-                  </Text>
-                </View>
-              ))}
+                    <Text className='block text-base font-bold mb-2 truncate text-white drop-shadow-glow-white-weak'>
+                      {project.name}
+                    </Text>
+                    
+                    <Text className='block text-sm mb-2 text-green-400 drop-shadow-glow-green'>
+                      {project.result?.destinyName || '凡人项目'}
+                    </Text>
+                    
+                    <Text 
+                      className='block text-xs text-gray-500'
+                      style={{ lineHeight: '1.5' }}
+                    >
+                      {truncateText(project.result?.comment || '', 20)}
+                    </Text>
+                  </View>
+                )
+              })}
             </View>
           )}
         </View>
@@ -215,21 +170,14 @@ export default function Portfolio() {
         }}
       >
         <View
-          className='py-4 rounded-lg text-center'
+          className='py-4 rounded-lg text-center shadow-bottom-btn'
           style={{
             background: 'linear-gradient(135deg, rgba(74, 222, 128, 0.2) 0%, rgba(34, 197, 94, 0.3) 100%)',
-            border: '1px solid rgba(74, 222, 128, 0.5)',
-            boxShadow: '0 0 20px rgba(74, 222, 128, 0.3), inset 0 0 15px rgba(74, 222, 128, 0.1)'
+            border: '1px solid rgba(74, 222, 128, 0.5)'
           }}
           onClick={() => Taro.reLaunch({ url: '/pages/index/index' })}
         >
-          <Text 
-            className='text-base font-bold'
-            style={{ 
-              color: '#4ade80',
-              textShadow: '0 0 10px rgba(74, 222, 128, 0.8)'
-            }}
-          >
+          <Text className='text-base font-bold text-green-400 drop-shadow-glow-green-strong'>
             🔮 继续开坛 (测算新项目)
           </Text>
         </View>

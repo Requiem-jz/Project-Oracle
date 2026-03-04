@@ -5,20 +5,12 @@ import type { ProjectInput, ProjectResult } from '@/utils/destinyEngine'
 export interface Project {
   id: string
   name: string
-  description: string
-  techStack: string[]
+  description?: string
+  techStack?: string[]
   status: 'planning' | 'developing' | 'completed' | 'archived'
   createdAt: number
   updatedAt: number
-  fortune: {
-    overall: number
-    tech: number
-    team: number
-    timing: number
-  }
-  hexagram?: string
-  divination?: string
-  result?: ProjectResult
+  result: ProjectResult
 }
 
 export interface CreatorRealm {

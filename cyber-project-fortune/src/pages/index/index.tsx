@@ -70,36 +70,29 @@ export default function Index() {
       <View className='mb-10 pt-4'>
         <View className='flex items-center justify-center mb-3'>
           <View className='w-16 h-1 bg-gradient-to-r from-transparent to-green-400' />
-          <Text className='mx-4 text-2xl font-bold text-green-400 tracking-widest'
-            style={{ textShadow: '0 0 20px #4ade80, 0 0 40px #4ade80' }}>
+          <Text className='mx-4 text-2xl font-bold text-green-400 tracking-widest drop-shadow-glow-green-strong'>
             赛博排盘
           </Text>
           <View className='w-16 h-1 bg-gradient-to-l from-transparent to-green-400' />
         </View>
-        <Text className='block text-center text-yellow-600 text-sm tracking-wider opacity-80'
-          style={{ textShadow: '0 0 10px #ca8a04' }}>
+        <Text className='block text-center text-yellow-600 text-sm tracking-wider opacity-80 drop-shadow-glow-yellow'>
           万物皆有代码，项目亦有命数
         </Text>
         <View className='mt-4 flex justify-center'>
-          <View className='w-32 h-1 bg-yellow-600 opacity-50'
-            style={{ boxShadow: '0 0 10px #ca8a04' }} />
+          <View className='w-32 h-1 bg-yellow-600 opacity-50 shadow-glow-yellow' />
         </View>
       </View>
 
       <View className='mb-6'>
         <View className='flex items-center mb-3'>
-          <Text className='text-green-400 text-lg font-medium'
-            style={{ textShadow: '0 0 10px #4ade80' }}>
+          <Text className='text-green-400 text-lg font-medium drop-shadow-glow-green'>
             ▸ 项目代号
           </Text>
-          <Text className='ml-2 text-red-400 text-xs'>*必填</Text>
+          <Text className='ml-2 text-red-400 text-xs drop-shadow-glow-red'>*必填</Text>
         </View>
         <Input
-          className='w-full h-12 px-4 bg-black border rounded-lg text-green-400'
-          style={{ 
-            borderColor: 'rgba(74, 222, 128, 0.5)',
-            boxShadow: '0 0 15px rgba(74, 222, 128, 0.3), inset 0 0 20px rgba(74, 222, 128, 0.05)'
-          }}
+          className='w-full h-12 px-4 bg-black border rounded-lg text-green-400 shadow-input'
+          style={{ borderColor: 'rgba(74, 222, 128, 0.5)' }}
           placeholder='输入项目神秘代号...'
           placeholderStyle='color: rgba(74, 222, 128, 0.3)'
           value={projectName}
@@ -108,8 +101,7 @@ export default function Index() {
       </View>
 
       <View className='mb-6'>
-        <Text className='block text-green-400 text-lg font-medium mb-3'
-          style={{ textShadow: '0 0 10px #4ade80' }}>
+        <Text className='block text-green-400 text-lg font-medium mb-3 drop-shadow-glow-green'>
           ▸ 技术五行
         </Text>
         <Picker
@@ -119,24 +111,20 @@ export default function Index() {
           onChange={(e) => setTechIndex(Number(e.detail.value))}
         >
           <View 
-            className='w-full h-12 px-4 bg-black border rounded-lg flex items-center justify-between'
-            style={{ 
-              borderColor: 'rgba(202, 138, 4, 0.5)',
-              boxShadow: '0 0 15px rgba(202, 138, 4, 0.3), inset 0 0 20px rgba(202, 138, 4, 0.05)'
-            }}
+            className='w-full h-12 px-4 bg-black border rounded-lg flex items-center justify-between shadow-input-yellow'
+            style={{ borderColor: 'rgba(202, 138, 4, 0.5)' }}
           >
             <Text className='text-yellow-600'>{TECH_FIVE_ELEMENTS[techIndex].label}</Text>
-            <Text className='text-xl' style={{ color: 'rgba(202, 138, 4, 0.6)' }}>▼</Text>
+            <Text className='text-xl text-yellow-600 opacity-60'>▼</Text>
           </View>
         </Picker>
-        <Text className='block text-xs mt-2 ml-1' style={{ color: 'rgba(202, 138, 4, 0.5)' }}>
+        <Text className='block text-xs mt-2 ml-1 text-yellow-600 opacity-50'>
           {TECH_FIVE_ELEMENTS[techIndex].desc}
         </Text>
       </View>
 
       <View className='mb-6'>
-        <Text className='block text-green-400 text-lg font-medium mb-3'
-          style={{ textShadow: '0 0 10px #4ade80' }}>
+        <Text className='block text-green-400 text-lg font-medium mb-3 drop-shadow-glow-green'>
           ▸ 商业身位
         </Text>
         <Picker
@@ -146,21 +134,17 @@ export default function Index() {
           onChange={(e) => setRoleIndex(Number(e.detail.value))}
         >
           <View 
-            className='w-full h-12 px-4 bg-black border rounded-lg flex items-center justify-between'
-            style={{ 
-              borderColor: 'rgba(74, 222, 128, 0.5)',
-              boxShadow: '0 0 15px rgba(74, 222, 128, 0.3), inset 0 0 20px rgba(74, 222, 128, 0.05)'
-            }}
+            className='w-full h-12 px-4 bg-black border rounded-lg flex items-center justify-between shadow-input'
+            style={{ borderColor: 'rgba(74, 222, 128, 0.5)' }}
           >
             <Text className='text-green-400'>{CONTRACT_ROLES[roleIndex].label}</Text>
-            <Text className='text-xl' style={{ color: 'rgba(74, 222, 128, 0.6)' }}>▼</Text>
+            <Text className='text-xl text-green-400 opacity-60'>▼</Text>
           </View>
         </Picker>
       </View>
 
       <View className='mb-6'>
-        <Text className='block text-green-400 text-lg font-medium mb-3'
-          style={{ textShadow: '0 0 10px #4ade80' }}>
+        <Text className='block text-green-400 text-lg font-medium mb-3 drop-shadow-glow-green'>
           ▸ 寿元气数
         </Text>
         <Picker
@@ -170,21 +154,17 @@ export default function Index() {
           onChange={(e) => setDeadlineIndex(Number(e.detail.value))}
         >
           <View 
-            className='w-full h-12 px-4 bg-black border rounded-lg flex items-center justify-between'
-            style={{ 
-              borderColor: 'rgba(202, 138, 4, 0.5)',
-              boxShadow: '0 0 15px rgba(202, 138, 4, 0.3), inset 0 0 20px rgba(202, 138, 4, 0.05)'
-            }}
+            className='w-full h-12 px-4 bg-black border rounded-lg flex items-center justify-between shadow-input-yellow'
+            style={{ borderColor: 'rgba(202, 138, 4, 0.5)' }}
           >
             <Text className='text-yellow-600'>{DEADLINES[deadlineIndex].label}</Text>
-            <Text className='text-xl' style={{ color: 'rgba(202, 138, 4, 0.6)' }}>▼</Text>
+            <Text className='text-xl text-yellow-600 opacity-60'>▼</Text>
           </View>
         </Picker>
       </View>
 
       <View className='mb-10'>
-        <Text className='block text-green-400 text-lg font-medium mb-3'
-          style={{ textShadow: '0 0 10px #4ade80' }}>
+        <Text className='block text-green-400 text-lg font-medium mb-3 drop-shadow-glow-green'>
           ▸ 前世因果
         </Text>
         <Picker
@@ -194,24 +174,17 @@ export default function Index() {
           onChange={(e) => setLegacyIndex(Number(e.detail.value))}
         >
           <View 
-            className='w-full h-12 px-4 bg-black border rounded-lg flex items-center justify-between'
-            style={{ 
-              borderColor: 'rgba(74, 222, 128, 0.5)',
-              boxShadow: '0 0 15px rgba(74, 222, 128, 0.3), inset 0 0 20px rgba(74, 222, 128, 0.05)'
-            }}
+            className='w-full h-12 px-4 bg-black border rounded-lg flex items-center justify-between shadow-input'
+            style={{ borderColor: 'rgba(74, 222, 128, 0.5)' }}
           >
             <Text className='text-green-400'>{LEGACY_CODES[legacyIndex].label}</Text>
-            <Text className='text-xl' style={{ color: 'rgba(74, 222, 128, 0.6)' }}>▼</Text>
+            <Text className='text-xl text-green-400 opacity-60'>▼</Text>
           </View>
         </Picker>
       </View>
 
       <Button
-        className='w-full h-14 bg-black border-2 border-green-400 rounded-lg text-green-400 text-lg font-bold tracking-widest'
-        style={{ 
-          boxShadow: '0 0 30px rgba(74, 222, 128, 0.6), 0 0 60px rgba(74, 222, 128, 0.3), inset 0 0 30px rgba(74, 222, 128, 0.1)',
-          textShadow: '0 0 10px #4ade80'
-        }}
+        className='w-full h-14 bg-black border-2 border-green-400 rounded-lg text-green-400 text-lg font-bold tracking-widest shadow-button drop-shadow-glow-green'
         hoverStyle={{
           boxShadow: '0 0 40px rgba(74, 222, 128, 0.8), 0 0 80px rgba(74, 222, 128, 0.4), inset 0 0 40px rgba(74, 222, 128, 0.2)',
           transform: 'scale(1.02)'
@@ -233,8 +206,7 @@ export default function Index() {
 
       <View className='mt-6 flex justify-center'>
         <Text 
-          className='text-sm underline'
-          style={{ color: 'rgba(202, 138, 4, 0.6)' }}
+          className='text-sm underline text-yellow-600 opacity-60'
           onClick={() => Taro.navigateTo({ url: '/pages/portfolio/index' })}
         >
           查看我的命盘图鉴 →

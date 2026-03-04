@@ -32,14 +32,6 @@ export default function Calculating() {
       description: result.comment,
       techStack: result.input.techStack,
       status: 'developing',
-      fortune: {
-        overall: Math.round((result.stats.搞钱运 + result.stats.代码风水) / 2),
-        tech: result.stats.代码风水,
-        team: 100 - result.stats.背锅率,
-        timing: 100 - result.stats.跳票率
-      },
-      hexagram: result.destinyName,
-      divination: result.comment,
       result: result
     })
     

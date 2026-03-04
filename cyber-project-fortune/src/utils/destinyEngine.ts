@@ -216,11 +216,23 @@ const DEFAULT_USER_REALM: UserRealmRule = {
   socialMatch: '随缘吧'
 }
 
-function generateId(): string {
+function simpleHash(str: string): number {
+  let hash = 0
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i)
+    hash |= 0
+  }
+  return Math.abs(hash)
+}
+
+function generateId(input: ProjectInput): string {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  const seedString = `${input.name}-${input.techStack.join('')}-${input.contractRole}-${input.deadline}-${input.legacyCode}`
+  const seed = simpleHash(seedString)
   let result = 'DEST_'
   for (let i = 0; i < 8; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length))
+    const charIndex = ((seed * (i + 7)) % chars.length + chars.length) % chars.length
+    result += chars.charAt(Math.floor(charIndex))
   }
   return result
 }
@@ -260,10 +272,14 @@ function calculateBaseStats(input: ProjectInput): ProjectStats {
     baseStats[key as keyof ProjectStats] += value || 0
   })
 
-  const randomFactor = () => Math.floor(Math.random() * 21) - 10
+  const seedString = `${input.name}-${input.techStack.join('')}-${input.contractRole}-${input.deadline}-${input.legacyCode}`
+  const seed = simpleHash(seedString)
   
-  Object.keys(baseStats).forEach(key => {
-    baseStats[key as keyof ProjectStats] += randomFactor()
+  const keys = Object.keys(baseStats) as Array<keyof ProjectStats>
+  keys.forEach((key, index) => {
+    const pseudoRandom = ((seed * (index + 13)) % 100) / 100
+    const randomFactor = Math.floor(pseudoRandom * 21) - 10
+    baseStats[key] += randomFactor
   })
 
   Object.keys(baseStats).forEach(key => {
@@ -287,7 +303,7 @@ export function calculateProjectDestiny(input: ProjectInput): ProjectResult {
   const { name: destinyName, comment } = determineDestiny(stats, input)
   
   return {
-    id: generateId(),
+    id: generateId(input),
     input,
     stats,
     destinyName,
