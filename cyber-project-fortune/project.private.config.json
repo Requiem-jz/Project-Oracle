@@ -1,0 +1,28 @@
+{
+  "miniprogramRoot": "dist/",
+  "projectname": "cyber-project-fortune",
+  "description": "赛博项目排盘",
+  "appid": "wx768adb292cd5a1d6",
+  "setting": {
+    "es6": false,
+    "minified": false,
+    "urlCheck": false,
+    "coverView": true,
+    "lazyloadPlaceholderEnable": false,
+    "skylineRenderEnable": false,
+    "preloadBackgroundData": false,
+    "autoAudits": false,
+    "useApiHook": true,
+    "showShadowRootInWxmlPanel": true,
+    "useStaticServer": false,
+    "useLanDebug": false,
+    "showES6CompileOption": false,
+    "compileHotReLoad": true,
+    "checkInvalidKey": true,
+    "ignoreDevUnusedFiles": true,
+    "bigPackageSizeSupport": false,
+    "useIsolateContext": true
+  },
+  "libVersion": "3.14.3",
+  "condition": {}
+}

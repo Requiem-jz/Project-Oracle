@@ -1,0 +1,124 @@
+@keyframes cyber-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.5), 0 0 40px rgba(0, 245, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 245, 255, 0.8), 0 0 80px rgba(0, 245, 255, 0.5);
+  }
+}
+
+@keyframes cyber-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes cyber-scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes cyber-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.cyber-glow {
+  animation: cyber-glow 2s ease-in-out infinite;
+}
+
+.cyber-pulse {
+  animation: cyber-pulse 1.5s ease-in-out infinite;
+}
+
+.cyber-scan {
+  animation: cyber-scan 2s linear infinite;
+}
+
+.cyber-float {
+  animation: cyber-float 3s ease-in-out infinite;
+}
+
+.cyber-border {
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  box-shadow: 
+    inset 0 0 20px rgba(0, 245, 255, 0.1),
+    0 0 20px rgba(0, 245, 255, 0.1);
+}
+
+.cyber-text-glow {
+  text-shadow: 
+    0 0 10px rgba(0, 245, 255, 0.8),
+    0 0 20px rgba(0, 245, 255, 0.5),
+    0 0 30px rgba(0, 245, 255, 0.3);
+}
+
+.cyber-gradient {
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+}
+
+.cyber-card {
+  background: linear-gradient(145deg, rgba(10, 10, 15, 0.9), rgba(26, 26, 46, 0.9));
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  border-radius: 8px;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.cyber-button {
+  background: linear-gradient(135deg, rgba(0, 245, 255, 0.2), rgba(139, 0, 255, 0.2));
+  border: 1px solid rgba(0, 245, 255, 0.5);
+  color: #00f5ff;
+  padding: 20px 40px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  
+  &:active {
+    background: linear-gradient(135deg, rgba(0, 245, 255, 0.4), rgba(139, 0, 255, 0.4));
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+  }
+}
+
+.cyber-input {
+  background: rgba(10, 10, 15, 0.8);
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  border-radius: 4px;
+  padding: 20px;
+  color: #ffffff;
+  
+  &:focus {
+    border-color: #00f5ff;
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+  }
+}
+
+.cyber-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.5), transparent);
+  margin: 40px 0;
+}
+
+.cyber-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(0, 245, 255, 0.1);
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  border-radius: 2px;
+  font-size: 24px;
+  color: #00f5ff;
+}
