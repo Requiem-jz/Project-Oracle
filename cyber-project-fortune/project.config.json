@@ -50,7 +50,16 @@
   "condition": {},
   "simulatorPluginLibVersion": {},
   "packOptions": {
-    "ignore": [],
+    "ignore": [
+      { "type": "folder", "value": "node_modules" },
+      { "type": "folder", "value": ".taro4.0" },
+      { "type": "file", "value": "pnpm-lock.yaml" },
+      { "type": "suffix", "value": ".md" },
+      { "type": "suffix", "value": ".ts" },
+      { "type": "suffix", "value": ".tsx" },
+      { "type": "suffix", "value": ".scss" },
+      { "type": "suffix", "value": ".config.js" }
+    ],
     "include": []
   },
   "editorSetting": {},
